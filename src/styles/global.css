@@ -4,3 +4,17 @@
     --color-beige: #E9E8DF;
     --color-brown: #A68F75;
 }
+
+.tab-content { 
+    display: none; 
+}
+
+.tab-content.active { 
+    display: flex; 
+}
+
+.tab-btn.active { 
+    background-color: var(--color-brown); 
+    color: var(--color-beige);
+    pointer-events: none;
+}

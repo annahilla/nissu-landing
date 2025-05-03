@@ -1,0 +1,36 @@
+---
+import Demo from "./tabs/Demo.astro";
+import Download from "./tabs/Download.astro";
+import Faqs from "./tabs/Faqs.astro";
+import DownloadButton from "./ui/DownloadButton.astro";
+import Tab from "./ui/Tab.astro";
+---
+<div class="flex flex-col gap-10 w-[50%]">
+    <div class="flex gap-4 mt-8">
+        <Tab dataTab="download" active>Download</Tab>
+        <Tab dataTab="demo">Demo</Tab>
+        <Tab dataTab="faqs">FAQs</Tab>
+    </div>
+
+    <Download />
+    <Demo />
+    <Faqs />
+
+    <DownloadButton />
+</div>
+
+<script type="module">
+    const tabs = document.querySelectorAll(".tab-btn");
+    const contents = document.querySelectorAll(".tab-content");
+
+    tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+        tabs.forEach((t) => t.classList.remove("active"));
+            tab.classList.add("active");
+
+            const id = tab.dataset.tab;
+            contents.forEach((c) => c.classList.remove("active"));
+            document.getElementById(`content-${id}`)?.classList.add("active");
+  });
+});
+</script>

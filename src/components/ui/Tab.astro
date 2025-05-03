@@ -1,0 +1,7 @@
+---
+const {dataTab, active} = Astro.props
+---
+
+<button data-tab={dataTab} class={`${active ? "active" : "hover:opacity-80"} tab-btn text-brown border border-2 border-brown p-2 rounded-lg font-semibold w-full cursor-pointer`}>
+    <slot />
+</button>
