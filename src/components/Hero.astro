@@ -1,9 +1,16 @@
 ---
 import AppPreview from "./AppPreview.astro";
-import MainSection from "./MainSection.astro";
+import Tabs from "./tabs/Tabs.astro";
+import DownloadButton from "./ui/DownloadButton.astro";
 ---
 
-<div class="mt-10 flex justify-between items-start h-full">
-    <MainSection />
-    <AppPreview />
+<div class="flex items-center justify-center h-full">
+        <div class="grid grid-cols-2">
+            <div class="flex flex-col gap-10 w-[40rem]">
+                <Tabs/>
+                <DownloadButton />
+            </div>
+            
+            <AppPreview />
+        </div>
 </div>

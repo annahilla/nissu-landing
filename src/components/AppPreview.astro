@@ -1,5 +1,15 @@
-<div class="flex items-center justify-center gap-4">
-    <p class="w-12 h-12 flex items-center justify-center text-brown border border-brown border-2 p-2 rounded-full">{"<"}</p>
-    <img width={280} src="images/app-preview-1.svg" alt="App preview">
-    <div class="w-12 h-12 flex items-center justify-center text-brown border border-brown border-2 p-2 rounded-full">{">"}</div>
+---
+import Button from "./ui/Button.astro";
+---
+
+<div class="flex items-center justify-end gap-4 w-full">
+    <Button>
+        {"<"}
+    </Button>
+
+    <img class="w-72" src="images/app-preview-1.svg" alt="App preview">
+
+    <Button>
+        {">"}
+    </Button>
 </div>
