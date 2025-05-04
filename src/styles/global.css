@@ -19,3 +19,9 @@
     pointer-events: none;
 }
 
+@media (prefers-color-scheme: dark) {
+    * {
+      color: inherit;
+      background-color: inherit;
+    }
+  }

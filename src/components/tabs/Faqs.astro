@@ -1,8 +1,28 @@
 ---
 import TabContentLayout from "../../layouts/TabContentLayout.astro";
+import Accordion from "../Accordion.astro";
+
+const items = [
+  {
+    title: "What happens if I miss a day?",
+    content:
+      "If you miss a day, your streak breaks and your house collapses! But don’t worry — you can earn cookies to protect your streak with Nissu’s help.",
+    open: true,
+  },
+  {
+    title: "How do I earn cookies?",
+    content:
+      "By completing your habits daily! Every streak milestone rewards you with cookies that can be used to save your house if you miss a day.",
+    open: false,
+  },
+  {
+    title: "Is the app free?",
+    content: "Yes! The app is completely free to use — no subscriptions or hidden fees.",
+    open: false,
+}
+];
 ---
 
 <TabContentLayout id="content-faqs">
-    <h1 class="text-5xl">FAQs</h1>
-    <p class="text-xl">Common questions answered.</p>
+    <Accordion items={items} />
 </TabContentLayout>
