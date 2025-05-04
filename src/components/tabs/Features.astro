@@ -1,29 +1,26 @@
 ---
+import AccordionIsland from "../../islands/AccordionIsland";
 import TabContentLayout from "../../layouts/TabContentLayout.astro";
-import Accordion from "../Accordion.astro";
 
 const items = [
   {
     title: "Build your house with streaks",
     content:
-      "Complete your daily habits to keep your streak going. Every time you hit a new streak milestone, a new floor is added to your house!",
-    open: true,
+      "Complete your daily habits to keep your streak going. Every time you hit a new streak milestone, a new floor is added to your house!"
   },
   {
     title: "Earn cookies",
     content:
-      "Stay consistent and earn cookies as rewards. Feed them to Nissu — he'll protect your streak and keep your house safe!",
-    open: false,
+      "Stay consistent and earn cookies as rewards. Feed them to Nissu — he'll protect your streak and keep your house safe!"
   },
   {
     title: "Don't lose your house!",
     content:
-      "Missing a day resets your streak — and your house might collapse! Stay on track to keep building higher.",
-    open: false,
+      "Missing a day resets your streak — and your house might collapse! Stay on track to keep building higher."
   },
 ];
 ---
 
 <TabContentLayout id="content-features">
-    <Accordion items={items} />
+    <AccordionIsland items={items} client:load />
 </TabContentLayout>
