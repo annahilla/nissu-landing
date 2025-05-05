@@ -20,10 +20,10 @@ export default function AccordionIsland({ items }: { items: ContentItems[] }) {
         return (
           <div key={index} className="overflow-hidden transition-all duration-300">
             <button
-              className="w-full flex justify-between items-center p-4 text-left text-xl font-semibold hover:opacity-70 cursor-pointer"
+              className="w-full flex justify-between items-center p-4 text-left hover:opacity-70 cursor-pointer"
               onClick={() => toggle(index)}
             >
-              <span>{item.title}</span>
+              <span className="text-xl font-semibold">{item.title}</span>
               <img
                 className="chevron-icon transition-transform duration-200"
                 src={isOpen ? "/images/chevron-up.svg" : "/images/chevron-down.svg"}

@@ -3,6 +3,9 @@
 @theme {
     --color-beige: #E9E8DF;
     --color-brown: #A68F75;
+    --font-poppins: Poppins, sans-serif;
+    --font-weight-semibold: 500;
+    --text-big: 2.7rem;
 }
 
 .tab-content { 
