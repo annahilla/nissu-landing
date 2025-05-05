@@ -13,7 +13,7 @@ export default function AccordionIsland({ items }: { items: ContentItems[] }) {
   };
 
   return (
-    <div className="flex flex-col gap-2 border border-2 border-brown rounded-[1vw] p-2">
+    <div className="flex flex-col gap-2 border border-2 border-brown rounded-lg p-2">
       {items.map((item, index) => {
         const isOpen = openIndex === index;
 
