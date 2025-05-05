@@ -5,15 +5,17 @@ import Faqs from "./Faqs.astro";
 import Tab from "./Tab.astro";
 ---
 
+<div class="flex flex-col gap-10 w-[40rem]">
 <div class="flex gap-4 mt-8">
     <Tab dataTab="download" active>Download</Tab>
     <Tab dataTab="features">Features</Tab>
     <Tab dataTab="faqs">FAQs</Tab>
 </div>
 
-<Download />
-<Features />
-<Faqs />
+    <Download />
+    <Features />
+    <Faqs />
+</div>
 
 <script type="module">
     const tabs = document.querySelectorAll(".tab-btn");
