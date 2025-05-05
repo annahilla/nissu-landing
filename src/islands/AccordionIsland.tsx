@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-export default function AccordionIsland({ items } : {items: ContentItems[]}) {
-    const [openIndex, setOpenIndex] = useState(0);
+export default function AccordionIsland({ items }: { items: ContentItems[] }) {
+  const [openIndex, setOpenIndex] = useState(0);
 
   const toggle = (index: number) => {
     if (openIndex === index) {
@@ -13,26 +13,35 @@ export default function AccordionIsland({ items } : {items: ContentItems[]}) {
   };
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-2 border border-2 border-brown rounded-[1vw] p-2">
       {items.map((item, index) => {
         const isOpen = openIndex === index;
 
         return (
-          <div key={index} className="border border-2 border-brown rounded-[1vw] overflow-hidden">
+          <div key={index} className="overflow-hidden transition-all duration-300">
             <button
-              className="w-full flex justify-between items-center p-4 text-left text-xl font-semibold"
+              className="w-full flex justify-between items-center p-4 text-left text-xl font-semibold hover:opacity-70 cursor-pointer"
               onClick={() => toggle(index)}
             >
-                <span>{item.title}</span>
+              <span>{item.title}</span>
               <img
                 className="chevron-icon transition-transform duration-200"
                 src={isOpen ? "/images/chevron-up.svg" : "/images/chevron-down.svg"}
                 alt="Chevron icon"
               />
             </button>
-            <div className={`transition-all duration-300 px-4 pb-4 ${isOpen ? "block" : "hidden"}`}>
-              {item.content}
+
+            <div
+              className={`overflow-hidden px-4 ${
+                isOpen ? "max-h-[500px] opacity-100 transition-all duration-500 ease-in-out" : "max-h-0 opacity-0"
+              }`}
+            >
+              <div className="pb-4 text-base">{item.content}</div>
             </div>
+
+            {(index + 1) !== items.length && (
+              <div className="mx-auto h-[1px] w-[95%] bg-brown" />
+            )}
           </div>
         );
       })}
