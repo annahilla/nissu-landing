@@ -23,14 +23,14 @@ export default function CarouselIsland({
   const next = () => changeImage((current + 1) % images.length);
 
   return (
-    <div className="flex items-center justify-end gap-4 w-full my-6">
+    <div className="flex items-center justify-center lg:justify-end gap-4 w-full my-6">
       <CarouselButton onClick={prev} direction="left" alt="Previous slide" />
 
       <div className="flex flex-col items-center gap-4">
         <img
           src={images[current].src}
           alt={images[current].alt}
-          className={`w-1/2 sm:w-[60%] lg:w-[18.5rem] transition-all duration-200 ease-out ${
+          className={`w-full lg:w-[90%] transition-all duration-200 ease-out ${
             isFading ? "opacity-30" : "opacity-100"
           }`}
         />
