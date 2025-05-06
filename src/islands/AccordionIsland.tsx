@@ -1,4 +1,5 @@
 import { useState } from "react";
+import type { ContentItems } from "../types";
 
 export default function AccordionIsland({ items }: { items: ContentItems[] }) {
   const [openIndex, setOpenIndex] = useState(0);
@@ -18,7 +19,10 @@ export default function AccordionIsland({ items }: { items: ContentItems[] }) {
         const isOpen = openIndex === index;
 
         return (
-          <div key={index} className="overflow-hidden transition-all duration-300">
+          <div
+            key={index}
+            className="overflow-hidden transition-all duration-300"
+          >
             <button
               className="w-full flex justify-between items-center p-4 text-left hover:opacity-70 cursor-pointer"
               onClick={() => toggle(index)}
@@ -26,20 +30,24 @@ export default function AccordionIsland({ items }: { items: ContentItems[] }) {
               <span className="text-xl font-semibold">{item.title}</span>
               <img
                 className="chevron-icon transition-transform duration-200"
-                src={isOpen ? "/images/chevron-up.svg" : "/images/chevron-down.svg"}
+                src={
+                  isOpen ? "/images/chevron-up.svg" : "/images/chevron-down.svg"
+                }
                 alt="Chevron icon"
               />
             </button>
 
             <div
               className={`overflow-hidden px-4 ${
-                isOpen ? "max-h-[500px] opacity-100 transition-all duration-500 ease-in-out" : "max-h-0 opacity-0"
+                isOpen
+                  ? "max-h-[500px] opacity-100 transition-all duration-500 ease-in-out"
+                  : "max-h-0 opacity-0"
               }`}
             >
               <div className="pb-4 text-base">{item.content}</div>
             </div>
 
-            {(index + 1) !== items.length && (
+            {index + 1 !== items.length && (
               <div className="mx-auto h-[1px] w-[95%] bg-brown" />
             )}
           </div>

@@ -1,15 +1,23 @@
 ---
-import Button from "./ui/Button.astro";
+import image1 from "../images/app-preview-1.png";
+import image2 from "../images/app-preview-2.png";
+import image3 from "../images/app-preview-3.png";
+import CarouselIsland from "../islands/carousel/Carouselsland";
+
+const images = [
+  {
+    src: image1.src,
+    alt: "Home screen of the habit tracking app with the habits listing",
+  },
+  {
+    src: image2.src,
+    alt: "Habit screen for a one day streak uncompleted habit showing one floor house",
+  },
+  {
+    src: image3.src,
+    alt: "Habit screen for a 15 day streak uncompleted habit showing a house with 15 floors",
+  }
+];
 ---
 
-<div class="flex items-center justify-center lg:justify-end gap-4 w-full">
-    <Button>
-        {"<"}
-    </Button>
-
-    <img class="w-1/2 sm:w-[60%] lg:w-74" src="images/app-preview-1.svg" alt="App preview">
-
-    <Button>
-        {">"}
-    </Button>
-</div>
+<CarouselIsland client:load images={images} />
