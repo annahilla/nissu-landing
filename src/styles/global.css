@@ -1,30 +1,30 @@
 @import "tailwindcss";
 
-@theme {
-    --color-beige: #E9E8DF;
-    --color-brown: #A68F75;
-    --font-poppins: Poppins, sans-serif;
-    --font-weight-semibold: 500;
-    --text-big: 2.7rem;
-}
-
-.tab-content { 
-    display: none; 
-}
-
-.tab-content.active { 
-    display: flex; 
-}
-
-.tab-btn.active { 
-    background-color: var(--color-brown); 
-    color: var(--color-beige);
-    pointer-events: none;
-}
-
 @media (prefers-color-scheme: dark) {
-    * {
-      color: inherit;
-      background-color: inherit;
-    }
+  * {
+    color: inherit;
+    background-color: inherit;
   }
+}
+
+@theme {
+  --color-beige: #e9e8df;
+  --color-brown: #a68f75;
+  --font-poppins: Poppins, sans-serif;
+  --font-weight-semibold: 500;
+  --text-big: 2.7rem;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: flex;
+}
+
+.tab-btn.active {
+  background-color: var(--color-brown);
+  color: var(--color-beige);
+  pointer-events: none;
+}

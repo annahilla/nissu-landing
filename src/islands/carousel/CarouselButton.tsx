@@ -1,12 +1,14 @@
+interface CarouselButtonProps {
+  onClick: () => void;
+  direction: "left" | "right";
+  alt: string;
+}
+
 export default function CarouselButton({
   onClick,
   direction,
   alt,
-}: {
-  onClick: () => void;
-  direction: "left" | "right";
-  alt: string;
-}) {
+}: CarouselButtonProps) {
   return (
     <button
       onClick={onClick}
