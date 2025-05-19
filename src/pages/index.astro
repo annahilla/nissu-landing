@@ -1,12 +1,16 @@
 ---
+import AppPreview from "../components/AppPreview.astro";
 import Cat from "../components/Cat.astro";
-import Header from "../components/Header.astro";
-import Hero from "../components/Hero.astro";
+import Tabs from "../components/tabs/Tabs.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-	<Header />
-	<Hero />
-	<Cat />
+	
+<div class="flex items-center justify-center h-full overflow-x-hidden">
+    <div class="grid grid-cols-1 gap-10 lg:grid-cols-2 px-6 sm:px-10 lg:p-0">
+        <Tabs/>
+        <AppPreview />
+    </div>
+</div>
 </Layout>

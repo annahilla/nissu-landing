@@ -2,7 +2,8 @@
 import '../styles/global.css'
 import '@fontsource/poppins/300.css';
 import '@fontsource/poppins/400.css';
-import '@fontsource/poppins/500.css';;
+import '@fontsource/poppins/500.css';import Header from '../components/Header.astro';
+import Cat from '../components/Cat.astro';
 ---
 
 <html lang="en">
@@ -13,6 +14,8 @@ import '@fontsource/poppins/500.css';;
 		<title>Nissu | Keep your habit streaks</title>
 	</head>
 	<body class="font-poppins font-light bg-beige lg:px-20 xl:px-40 lg:h-screen flex flex-col mb-20 lg:mb-0">
-		<slot />
+		<Header />
+    	<slot />
+		<Cat />
 	</body>
 </html>

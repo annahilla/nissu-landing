@@ -24,7 +24,7 @@ export default function CookieGeneratorCat() {
 
   return (
     <div>
-      <button className="w-30 h-30 fixed flex gap-4 h-36 items-center bottom-4 left-4 cursor-pointer md:left-8 md:w-auto h-auto">
+      <button className="outline-none w-30 h-30 fixed flex gap-4 h-36 items-center bottom-4 left-4 cursor-pointer md:left-8 md:w-auto h-auto">
         <img onClick={generateCookie} src="/images/cat.svg" alt="cat" />
       </button>
 
