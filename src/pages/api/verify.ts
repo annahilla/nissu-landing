@@ -1,7 +1,7 @@
 import { Client, Account } from "node-appwrite";
 import type { APIContext } from "astro";
 
-export async function GET({ url, redirect }: APIContext) {
+export async function GET({ url }: APIContext) {
   const client = new Client();
   const account = new Account(client);
 
@@ -13,15 +13,23 @@ export async function GET({ url, redirect }: APIContext) {
   const userId = url.searchParams.get("userId");
   const secret = url.searchParams.get("secret");
 
+  const redirectTo = (success: boolean) =>
+    new Response(null, {
+      status: 302,
+      headers: {
+        Location: `/account-verified?success=${success}`,
+      },
+    });
+
   if (!userId || !secret) {
-    return redirect("/account-verified?success=false");
+    return redirectTo(false);
   }
 
   try {
     await account.updateVerification(userId, secret);
-    return redirect("/account-verified?success=true");
+    return redirectTo(true);
   } catch (error) {
     console.error("Verification failed:", error);
-    return redirect("/account-verified?success=false");
+    return redirectTo(false);
   }
 }
