@@ -1,9 +1,10 @@
 @import "tailwindcss";
 
 @media (prefers-color-scheme: dark) {
-  * {
-    color: inherit;
-    background-color: inherit;
+  html[data-no-dark],
+  html[data-no-dark] * {
+    color: initial !important;
+    background-color: initial !important;
   }
 }
 
