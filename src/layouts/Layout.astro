@@ -12,8 +12,10 @@ import '@fontsource/poppins/500.css';import Header from '../components/Header.as
 		<meta name="viewport" content="width=device-width" />
 		<title>Nissu | Keep your habit streaks</title>
 	</head>
-	<body class="font-poppins font-light bg-beige lg:px-20 xl:px-40 lg:min-h-screen flex flex-col mb-20 lg:mb-0">
+	<body class="font-poppins font-light bg-beige lg:px-20 xl:px-40 lg:min-h-screen items-center justify-center flex flex-col mb-20">
 		<Header />
-    	<slot />
+    	<div class="mt-20 lg:mt-0">
+			<slot />
+		</div>
 	</body>
 </html>
