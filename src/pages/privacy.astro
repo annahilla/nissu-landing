@@ -1,0 +1,120 @@
+---
+import NissuMail from "../components/NissuMail.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+    <main class="py-12 flex flex-col mx-auto gap-6 md:w-2/3">
+        <h1 class="text-4xl font-bold">Privacy Policy for Nissu</h1>
+        <span class="flex gap-1">
+            <strong>Last updated:</strong>
+            <p>May 27, 2025</p>
+        </span>
+
+        <p>
+            At <strong>Nissu</strong>, we value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your personal data in accordance with the <strong>General Data Protection Regulation (EU) 2016/679 (GDPR)</strong> and the <strong>Spanish Organic Law 3/2018</strong> on the <strong>Protection of Personal Data and Guarantee of Digital Rights (LOPDGDD)</strong>.
+        </p>
+
+        <section class="my-2 flex flex-col gap-4">
+            <h2 class="text-xl font-bold">1. Data Controller</h2>
+            <p>The data controller for this application is:</p>
+                <ul class="list-disc mx-8">
+                    <li>Nissu</li>
+                    <li>Email: <NissuMail /></li>
+                </ul>
+            <p>Nissu is a personal project developed and maintained by <a class="underline" href="https://annahilla.com" target="_blank">Anna Hilla</a>. For any questions regarding your personal data or to exercise your data rights, you may contact us at the email address above.</p>
+        </section>
+
+        <section class="my-2 flex flex-col gap-4">
+            <h2 class="text-xl font-bold">2. Data We Collect</h2>
+            <p>
+                The only personal information we collect is your <strong>email address</strong>, which is used solely for authentication purposes (login with email and password).
+                We do not collect any other personal or sensitive data, nor do we use tracking technologies such as cookies within the app.
+            </p>
+        </section>
+
+        <section class="my-2 flex flex-col gap-4">
+            <h2 class="text-xl font-bold">3. Purpose of Data Processing</h2>
+            <p>
+                Your email address is used exclusively to:
+            </p>
+
+            <ul class="list-disc mx-8">
+                <li>
+                    Allow you to register and log into the app
+                </li>
+                <li>
+                    Allow access to your personalized data (e.g., tracked habits)
+                </li>
+            </ul>
+
+            <p>We do not use your data for analytics, advertising, or marketing purposes.</p>
+        </section>
+
+        <section class="my-2 flex flex-col gap-4">
+            <h2 class="text-xl font-bold">4. Legal Basis</h2>
+            <p>
+                The processing of your email address is based on your explicit consent (Article 6.1.a of the GDPR), which you provide when you register and log in to the app.
+                You may withdraw your consent at any time by contacting us.
+            </p>
+        </section>
+
+        <section class="my-2 flex flex-col gap-4">
+            <h2 class="text-xl font-bold">5. Data Retention</h2>
+            <p>
+                We retain your email address for as long as your user account remains active. If you delete your account or request deletion, your data will be permanently removed from our systems without undue delay.
+            </p>
+        </section>
+
+        <section class="my-2 flex flex-col gap-4">
+            <h2 class="text-xl font-bold">6. Data Sharing and International Transfers</h2>
+            <p>We do not share your personal data with third parties for commercial or marketing purposes.</p>
+            <p>
+                We use <strong>Appwrite</strong>, a backend platform hosted on servers located in Frankfurt, Germany (within the European Union). Therefore, no international transfers of your personal data outside the European Economic Area (EEA) take place.
+            </p>
+            <p>We ensure that all service providers we use comply with the data protection requirements established by the GDPR.</p>
+        </section>
+
+        <section class="my-2 flex flex-col gap-4">
+            <h2 class="text-xl font-bold">7. Your rights</h2>
+            <p>As a user, you have the right to:</p>
+            <ul class="list-disc mx-8">
+                <li>Access the personal data we hold about you</li>
+                <li>Request correction of inaccurate data</li>
+                <li>Request deletion of your data</li>
+                <li>Object to or restrict the processing of your data</li>
+                <li>Request portability of your data to another provider</li>
+            </ul>
+            <p>To exercise any of these rights, contact us at <NissuMail />.</p>
+        </section>
+
+        <section class="my-2 flex flex-col gap-4">
+            <h2 class="text-xl font-bold">8. Data Security</h2>
+            <p>
+                Nissu implements appropriate technical and organizational measures to ensure the security of your personal data and protect it from unauthorized access, disclosure, alteration, or destruction.
+                However, please note that no method of data transmission or storage over the internet is 100% secure.
+            </p>
+        </section>
+
+         <section class="my-2 flex flex-col gap-4">
+            <h2 class="text-xl font-bold">9. Changes to This Privacy Policy</h2>
+            <p>
+                We reserve the right to update this Privacy Policy. Any changes will be communicated through the app or published on our official website, and the updated version will always include the effective date.
+            </p>
+        </section>
+
+        <section class="my-2 flex flex-col gap-4">
+            <h2 class="text-xl font-bold">10. Applicable Law</h2>
+            <p>
+                This Privacy Policy is governed by the laws of Spain and the European Union, specifically the <strong>General Data Protection Regulation (GDPR)</strong> and the <strong>Organic Law 3/2018 (LOPDGDD)</strong>.
+            </p>
+        </section>
+
+        <section class="my-2 flex flex-col gap-4">
+            <h2 class="text-xl font-bold">11. Contact Us</h2>
+            <p>
+                If you have any questions about this Privacy Policy, feel free to contact us at: <NissuMail />.
+            </p>
+        </section>
+    </main>
+</Layout>
