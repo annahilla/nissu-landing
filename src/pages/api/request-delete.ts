@@ -59,6 +59,8 @@ export async function POST({
     return redirect("/delete-account?status=success");
   } catch (error) {
     console.error("Error:", error);
-    return redirect("/delete-account?status=error");
+    return new Response(`Internal error: ${JSON.stringify(error)}`, {
+      status: 500,
+    });
   }
 }
