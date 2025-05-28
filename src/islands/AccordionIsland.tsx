@@ -44,7 +44,10 @@ export default function AccordionIsland({ items }: { items: ContentItems[] }) {
                   : "max-h-0 opacity-0"
               }`}
             >
-              <div className="pb-4 text-base">{item.content}</div>
+              <div
+                className="pb-4 text-base"
+                dangerouslySetInnerHTML={{ __html: item.content }}
+              />
             </div>
 
             {index + 1 !== items.length && (
