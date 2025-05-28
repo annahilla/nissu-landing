@@ -27,7 +27,7 @@ export default function CarouselIsland({ images }: CarouselIslandProps) {
   }, [embla, onSelect]);
 
   return (
-    <div className="flex items-center justify-center lg:justify-end gap-4 w-full my-6">
+    <div className="flex items-center justify-center lg:justify-end w-full my-6">
       <CarouselButton
         onClick={scrollPrev}
         direction="left"
@@ -35,15 +35,18 @@ export default function CarouselIsland({ images }: CarouselIslandProps) {
       />
 
       <div className="flex flex-col items-center gap-4">
-        <div className="overflow-hidden w-full md:w-74" ref={emblaRef}>
+        <div className="overflow-hidden w-full md:w-82" ref={emblaRef}>
           <div className="flex">
             {images.map((image, index) => (
-              <img
-                key={index}
-                className="min-w-full snap-center px-3"
-                src={image.src}
-                alt={image.alt}
-              />
+              <div className="relative min-w-full aspect-[1/2] bg-beige rounded-lg">
+                <img
+                  key={index}
+                  className="absolute top-0 left-0 w-full h-full object-cover"
+                  src={image.src}
+                  alt={image.alt}
+                  loading="lazy"
+                />
+              </div>
             ))}
           </div>
         </div>
