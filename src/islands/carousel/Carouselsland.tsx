@@ -35,10 +35,10 @@ export default function CarouselIsland({ images }: CarouselIslandProps) {
       />
 
       <div className="flex flex-col items-center gap-4">
-        <div className="overflow-hidden w-full md:w-82" ref={emblaRef}>
+        <div className="overflow-hidden w-[15rem] md:w-82" ref={emblaRef}>
           <div className="flex">
             {images.map((image, index) => (
-              <div className="relative min-w-full aspect-[1/2] bg-beige rounded-lg">
+              <div className="relative min-w-full aspect-[1/2] bg-beige">
                 <img
                   key={index}
                   className="absolute top-0 left-0 w-full h-full object-cover"
