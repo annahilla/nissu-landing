@@ -46,7 +46,7 @@ export async function POST({
       }
     );
 
-    const deleteLink = `${import.meta.env.URL}/delete-account/confirm?token=${token}`;
+    const deleteLink = `${import.meta.env.URL}/delete-account/process-delete?token=${token}`;
 
     await resend.emails.send({
       from: "Nissu <no-reply@nissu.app>",
