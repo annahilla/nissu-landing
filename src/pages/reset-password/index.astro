@@ -15,7 +15,7 @@ const expiresAt = Astro.url.searchParams.get('expire');
       <form
         method="POST"
         action="/api/confirm-reset"
-        class="flex flex-col gap-4 w-full"
+        class="flex flex-col gap-4 self-center"
       >
         <input type="hidden" name="token" value={token} />
         <input type="hidden" name="secret" value={secret} />

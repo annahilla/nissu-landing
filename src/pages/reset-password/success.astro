@@ -1,19 +1,13 @@
 ---
 import LinkButton from '../../components/ui/LinkButton.astro';
-import Layout from '../../layouts/Layout.astro';
+import ConfigLayout from '../../layouts/ConfigLayout.astro';
 ---
 
-<Layout>
-  <div class="h-[80vh] lg:h-full flex items-center justify-center">
-    <div
-      class="max-w-[40rem] flex flex-col items-center justify-center gap-6 border-brown rounded-lg border-2 px-12 py-17 m-8 text-center"
-    >
-      <div class="flex flex-col items-center gap-4 mb-2">
-        <span class="text-4xl">✅</span>
-        <p class="font-semibold text-2xl">Password changed successfully</p>
-        <p>You can now return to the app with your new password.</p>
-      </div>
-      <LinkButton href="nissu://"> Open Nissu </LinkButton>
-    </div>
+<ConfigLayout>
+  <div class="flex flex-col items-center gap-4 mb-2">
+    <span class="text-4xl">✅</span>
+    <p class="font-semibold text-2xl">Password changed successfully</p>
+    <p>You can now return to the app with your new password.</p>
   </div>
-</Layout>
+  <LinkButton href="nissu://"> Open Nissu </LinkButton>
+</ConfigLayout>
