@@ -1,0 +1,46 @@
+---
+import Button from '../../components/ui/Button.astro';
+import LinkButton from '../../components/ui/LinkButton.astro';
+import ConfigLayout from '../../layouts/ConfigLayout.astro';
+
+const token = Astro.url.searchParams.get('userId');
+const secret = Astro.url.searchParams.get('secret');
+const expiresAt = Astro.url.searchParams.get('expire');
+---
+
+<ConfigLayout>
+  <h1 class="text-2xl font-semibold mb-6">Set a New Password</h1>
+  {
+    token ? (
+      <form
+        method="POST"
+        action="/api/confirm-reset"
+        class="flex flex-col gap-4 w-full"
+      >
+        <input type="hidden" name="token" value={token} />
+        <input type="hidden" name="secret" value={secret} />
+        <input type="hidden" name="expiresAt" value={expiresAt} />
+        <input
+          type="password"
+          name="password"
+          placeholder="New password"
+          class="border-2 border-brown px-4 py-2 rounded-full"
+          required
+        />
+        <input
+          type="password"
+          name="confirmPassword"
+          placeholder="Confirm password"
+          class="border-2 border-brown px-4 py-2 rounded-full"
+          required
+        />
+        <Button type="submit">Change Password</Button>
+      </form>
+    ) : (
+      <>
+        <p>Ups! There was an error: Invalid or missing token</p>
+        <LinkButton href="/">Go back</LinkButton>
+      </>
+    )
+  }
+</ConfigLayout>

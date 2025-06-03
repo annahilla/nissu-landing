@@ -1,31 +1,29 @@
 ---
-import Layout from "../../../layouts/Layout.astro";
+import LinkButton from '../../../components/ui/LinkButton.astro';
+import ConfigLayout from '../../../layouts/ConfigLayout.astro';
 
-
-const status = Astro.url.searchParams.get("status");
+const status = Astro.url.searchParams.get('status');
 ---
 
-<Layout>
-  <div class="h-[80vh] lg:h-full flex items-center justify-center">
-    <div
-      class="max-w-[40rem] flex flex-col items-center justify-center gap-4 border-brown rounded-lg border-2 px-12 py-17 m-8 text-center"
-    >
-      {
-        status === "success" ? (
-          <div class="flex flex-col gap-4">
-          <span class="text-4xl">👋</span>
-          <p class="font-semibold text-2xl">Goodbye! </p>
-          <p>Your account has been deleted successfully. Hope we'll see you anytime soon.</p>
-        </div>
-        ) : (
-          <div class="flex flex-col items-center gap-4">
-          <span class="text-4xl">❌</span>
-          <p class="font-semibold text-2xl">Uh Oh... Something went wrong</p>
-          <p>The deletion link may be invalid or expired. Please try again.</p>
-        <a href="/delete-account" type="submit" class="bg-brown text-white px-4 py-2 rounded-full w-fit hover:opacity-70 cursor-pointer">Try again</a href="/delete-account">
-        </div>
-        )
-      }
-    </div>
-  </div>
-</Layout>
+<ConfigLayout>
+  {
+    status === 'success' ? (
+      <div class="flex flex-col gap-4">
+        <span class="text-4xl">👋</span>
+        <p class="font-semibold text-2xl">Goodbye! </p>
+        <p>
+          Your account has been deleted successfully. Hope we'll see you anytime
+          soon.
+        </p>
+      </div>
+    ) : (
+      <div class="flex flex-col items-center gap-4">
+        <span class="text-4xl">❌</span>
+        <p class="font-semibold text-2xl">Uh Oh... Something went wrong</p>
+        <p>The deletion link may be invalid or expired. Please try again.</p>
+
+        <LinkButton href="/delete-account">Try again</LinkButton>
+      </div>
+    )
+  }
+</ConfigLayout>

@@ -1,0 +1,10 @@
+---
+const { type } = Astro.props;
+---
+
+<button
+  type={type}
+  class="bg-brown text-white px-4 py-2 rounded-full hover:opacity-70"
+>
+  <slot />
+</button>

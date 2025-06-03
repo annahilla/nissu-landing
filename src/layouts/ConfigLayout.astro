@@ -1,0 +1,13 @@
+---
+import Layout from './Layout.astro';
+---
+
+<Layout>
+  <div class="h-[80vh] lg:h-full w-full flex items-center justify-center">
+    <div
+      class="max-w-[40rem] flex flex-col items-center justify-center gap-4 border-brown rounded-lg border-2 px-8 py-17 m-8 text-center"
+    >
+      <slot />
+    </div>
+  </div>
+</Layout>
