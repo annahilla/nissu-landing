@@ -1,16 +1,23 @@
 ---
-import ConfigLayout from '../layouts/ConfigLayout.astro';
+import Layout from '../layouts/Layout.astro';
 ---
 
-<ConfigLayout>
-  <div class="text-4xl">🔐</div>
-  <h1 id="title" class="text-xl font-semibold">Verifying your email...</h1>
-  <p id="status">Verifying your email...</p>
-</ConfigLayout>
+<Layout>
+  <div class="h-[80vh] flex items-center justify-center">
+    <div
+      class="w-full md:w-[50rem] flex flex-col items-center justify-center gap-4 border-brown rounded-lg border-2 px-12 py-17 m-8 text-center"
+    >
+      <div class="text-4xl">🔐</div>
+      <h1 id="title" class="text-xl font-semibold">Verifying your email</h1>
+      <p id="status">Loading...</p>
+    </div>
+  </div>
+</Layout>
+
+<script src="https://cdn.jsdelivr.net/npm/appwrite@10.0.0/dist/appwrite.min.js"
+></script>
 
 <script is:inline>
-  import { Client, Account } from 'appwrite';
-
   async function run() {
     const params = new URL(window.location.href).searchParams;
     const userId = params.get('userId');
@@ -19,11 +26,11 @@ import ConfigLayout from '../layouts/ConfigLayout.astro';
 
     if (userId && secret) {
       try {
-        const client = new Client()
+        const client = new window.Appwrite.Client()
           .setEndpoint('https://cloud.appwrite.io/v1')
           .setProject(import.meta.env.PUBLIC_APPWRITE_PROJECT_ID);
 
-        const account = new Account(client);
+        const account = new window.Appwrite.Account(client);
         await account.updateVerification(userId, secret);
 
         statusEl.textContent =
