@@ -1,8 +1,8 @@
-import useEmblaCarousel from "embla-carousel-react";
-import { useEffect, useState, useCallback } from "react";
-import type { CarouselImages } from "../../types";
-import CarouselButton from "./CarouselButton";
-import Indicator from "./Indicator";
+import useEmblaCarousel from 'embla-carousel-react';
+import { useEffect, useState, useCallback } from 'react';
+import type { CarouselImages } from '../../types';
+import CarouselButton from './CarouselButton';
+import Indicator from './Indicator';
 
 interface CarouselIslandProps {
   images: CarouselImages[];
@@ -22,7 +22,7 @@ export default function CarouselIsland({ images }: CarouselIslandProps) {
 
   useEffect(() => {
     if (!embla) return;
-    embla.on("select", onSelect);
+    embla.on('select', onSelect);
     onSelect();
   }, [embla, onSelect]);
 
@@ -35,7 +35,10 @@ export default function CarouselIsland({ images }: CarouselIslandProps) {
       />
 
       <div className="flex flex-col items-center gap-4">
-        <div className="overflow-hidden w-[15rem] md:w-82" ref={emblaRef}>
+        <div
+          className="overflow-hidden w-[15rem] md:w-82 md:h-160"
+          ref={emblaRef}
+        >
           <div className="flex">
             {images.map((image, index) => (
               <div className="relative min-w-full aspect-[1/2] bg-beige">
