@@ -1,42 +1,42 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { Client, Account } from 'node-appwrite';
-
-const { url } = Astro.request;
-const searchParams = new URL(url).searchParams;
-const userId = searchParams.get('userId');
-const secret = searchParams.get('secret');
-
-let status = 'Verifying your email...';
-
-if (userId && secret) {
-  try {
-    const client = new Client()
-      .setEndpoint('https://cloud.appwrite.io/v1')
-      .setProject(import.meta.env.APPWRITE_PROJECT_ID)
-      .setKey(import.meta.env.APPWRITE_API_KEY);
-
-    const account = new Account(client);
-    await account.updateVerification(userId, secret);
-
-    status = '✅ Email verified successfully.';
-  } catch (err) {
-    status = '❌ There was an error verifying your email.';
-  }
-} else {
-  status = '❌ Invalid link.';
-}
+import ConfigLayout from '../layouts/ConfigLayout.astro';
 ---
 
-<Layout>
-  <div class="h-[70vh] lg:h-full flex items-center justify-center">
-    <div
-      class="w-[50rem] flex flex-col items-center justify-center gap-4 border-brown rounded-lg border-2 px-12 py-17 m-8 text-center"
-    >
-      <div class="text-4xl">🔐</div>
-      <h1 id="title" class="text-xl font-semibold">Verifying your email...</h1>
-      <p>{status}</p>
-      <p>You can close this page and open or restart de app to proceed.</p>
-    </div>
-  </div>
-</Layout>
+<ConfigLayout>
+  <div class="text-4xl">🔐</div>
+  <h1 id="title" class="text-xl font-semibold">Verifying your email...</h1>
+  <p id="status">Verifying your email...</p>
+</ConfigLayout>
+
+<script is:inline>
+  import { Client, Account } from 'appwrite';
+
+  async function run() {
+    const params = new URL(window.location.href).searchParams;
+    const userId = params.get('userId');
+    const secret = params.get('secret');
+    const statusEl = document.getElementById('status');
+
+    if (userId && secret) {
+      try {
+        const client = new Client()
+          .setEndpoint('https://cloud.appwrite.io/v1')
+          .setProject(import.meta.env.PUBLIC_APPWRITE_PROJECT_ID);
+
+        const account = new Account(client);
+        await account.updateVerification(userId, secret);
+
+        statusEl.textContent =
+          '✅ Email verified successfully. You can now return to the app and log in.';
+      } catch (err) {
+        console.error(err);
+        statusEl.textContent =
+          '❌ There was an error verifying your email. The link may have expired.';
+      }
+    } else {
+      statusEl.textContent = '❌ Invalid link.';
+    }
+  }
+
+  run();
+</script>
