@@ -16,10 +16,11 @@ const projectId = import.meta.env.PUBLIC_APPWRITE_PROJECT_ID;
   </div>
 </Layout>
 
-<script src="https://cdn.jsdelivr.net/npm/appwrite@20.1.0/dist/iife/sdk.min.js"
-></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/appwrite@20.1.0/dist/iife/sdk.min.js"
+  defer></script>
 
-<script is:inline define:vars={{ projectId }}>
+<script is:inline defer define:vars={{ projectId }}>
   async function run() {
     const params = new URL(window.location.href).searchParams;
     const userId = params.get('userId');
