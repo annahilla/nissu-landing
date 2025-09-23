@@ -4,7 +4,7 @@
 
 ## Overview
 
-This is the **landing page** for my React Native app, [**Nissu**](https://nissu-landing.vercel.app/): a gamified habit tracker where each streak adds a floor to your house.
+This is the **landing page** for my React Native app, [**Nissu**](https://nissu.app/): a gamified habit tracker where each streak adds a floor to your house.
 
 I wanted the landing to reflect the playful, interactive spirit of the app — simple but with delightful details.
 
