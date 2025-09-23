@@ -1,5 +1,5 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from '../layouts/Layout.astro';
 
 const { url } = Astro.request;
 const searchParams = new URL(url).searchParams;
@@ -7,7 +7,7 @@ const userId = searchParams.get('userId');
 const secret = searchParams.get('secret');
 
 const appLink = `nissu://verify-email?userId=${userId}&secret=${secret}`;
-const fallbackUrl = '/';
+const fallbackUrl = `/verify-fallback?userId=${userId}&secret=${secret}`;
 ---
 
 <Layout>
@@ -15,9 +15,7 @@ const fallbackUrl = '/';
     <div
       class="w-[50rem] flex flex-col items-center justify-center gap-4 border-brown rounded-lg border-2 px-12 py-17 m-8 text-center"
     >
-      <div class="text-4xl">
-        🔐
-      </div>
+      <div class="text-4xl">🔐</div>
       <h1 id="title" class="text-xl font-semibold">Verifying your email...</h1>
       <p>If you have the app installed, it will open automatically.</p>
       <p>If not, you’ll be redirected in a few seconds.</p>
@@ -25,8 +23,7 @@ const fallbackUrl = '/';
   </div>
 </Layout>
 
-<script is:inline define:vars={{appLink, fallbackUrl}}>
-
+<script is:inline define:vars={{ appLink, fallbackUrl }}>
   window.location.href = appLink;
 
   setTimeout(() => {
