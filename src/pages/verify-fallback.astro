@@ -20,12 +20,18 @@ const projectId = import.meta.env.PUBLIC_APPWRITE_PROJECT_ID;
   src="https://cdn.jsdelivr.net/npm/appwrite@20.1.0/dist/iife/sdk.min.js"
   defer></script>
 
-<script is:inline defer define:vars={{ projectId }}>
+<script is:inline define:vars={{ projectId }}>
   async function run() {
     const params = new URL(window.location.href).searchParams;
     const userId = params.get('userId');
     const secret = params.get('secret');
     const statusEl = document.getElementById('status');
+
+    if (!window.Appwrite) {
+      console.log('Appwrite SDK not loaded yet, waiting...');
+      setTimeout(run, 50);
+      return;
+    }
 
     if (userId && secret) {
       try {
@@ -48,5 +54,5 @@ const projectId = import.meta.env.PUBLIC_APPWRITE_PROJECT_ID;
     }
   }
 
-  run();
+  window.addEventListener('load', run);
 </script>
