@@ -3,7 +3,6 @@ import Layout from '../layouts/Layout.astro';
 const params = new URL(Astro.request.url).searchParams;
 const userId = params.get('userId');
 const secret = params.get('secret');
-const apiUrl = `/api/verify-email?userId=${userId}&secret=${secret}`;
 ---
 
 <Layout>
@@ -18,12 +17,20 @@ const apiUrl = `/api/verify-email?userId=${userId}&secret=${secret}`;
   </div>
 </Layout>
 
-<script is:inline define:vars={{ apiUrl }}>
+<script is:inline define:vars={{ userId, secret }}>
   async function run() {
     const statusEl = document.getElementById('status');
 
     try {
-      const res = await fetch(apiUrl);
+      const res = await fetch('/api/verify-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: userId,
+          secret: secret,
+        }),
+      });
+
       const data = await res.json();
 
       if (data.success) {
