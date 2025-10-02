@@ -24,9 +24,18 @@ const fallbackUrl = `/verify-fallback?userId=${userId}&secret=${secret}`;
 </Layout>
 
 <script is:inline define:vars={{ appLink, fallbackUrl }}>
-  window.location.href = appLink;
+  function isMobile() {
+    const ua = navigator.userAgent.toLowerCase();
+    return /android|iphone|ipad|ipod|windows phone/i.test(ua);
+  }
 
-  setTimeout(() => {
+  if (isMobile()) {
+    window.location.href = appLink;
+
+    setTimeout(() => {
+      window.location.href = fallbackUrl;
+    }, 2500);
+  } else {
     window.location.href = fallbackUrl;
-  }, 3000);
+  }
 </script>

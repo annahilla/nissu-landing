@@ -1,7 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-const projectId = import.meta.env.PUBLIC_APPWRITE_PROJECT_ID;
+const params = new URL(Astro.request.url).searchParams;
+const userId = params.get('userId');
+const secret = params.get('secret');
+const apiUrl = `/api/verify-email?userId=${userId}&secret=${secret}`;
 ---
 
 <Layout>
@@ -10,47 +12,29 @@ const projectId = import.meta.env.PUBLIC_APPWRITE_PROJECT_ID;
       class="w-full md:w-[50rem] flex flex-col items-center justify-center gap-4 border-brown rounded-lg border-2 px-12 py-17 m-8 text-center"
     >
       <div class="text-4xl">🔐</div>
-      <h1 id="title" class="text-xl font-semibold">Verifying your email</h1>
+      <h1 class="text-xl font-semibold">Verifying your email</h1>
       <p id="status">Loading...</p>
     </div>
   </div>
 </Layout>
 
-<script
-  src="https://cdn.jsdelivr.net/npm/appwrite@20.1.0/dist/iife/sdk.min.js"
-  defer></script>
-
-<script is:inline define:vars={{ projectId }}>
+<script is:inline define:vars={{ apiUrl }}>
   async function run() {
-    const params = new URL(window.location.href).searchParams;
-    const userId = params.get('userId');
-    const secret = params.get('secret');
     const statusEl = document.getElementById('status');
 
-    if (!window.Appwrite) {
-      console.log('Appwrite SDK not loaded yet, waiting...');
-      setTimeout(run, 50);
-      return;
-    }
+    try {
+      const res = await fetch(apiUrl);
+      const data = await res.json();
 
-    if (userId && secret) {
-      try {
-        const client = new window.Appwrite.Client()
-          .setEndpoint('https://cloud.appwrite.io/v1')
-          .setProject(projectId);
-
-        const account = new window.Appwrite.Account(client);
-        await account.updateVerification(userId, secret);
-
+      if (data.success) {
         statusEl.textContent =
           '✅ Email verified successfully. You can now return to the app and log in.';
-      } catch (err) {
-        console.error(err);
-        statusEl.textContent =
-          '❌ There was an error verifying your email. The link may have expired.';
+      } else {
+        statusEl.textContent = '❌ ' + data.message;
       }
-    } else {
-      statusEl.textContent = '❌ Invalid link.';
+    } catch (err) {
+      console.error(err);
+      statusEl.textContent = '❌ There was an error verifying your email.';
     }
   }
 
