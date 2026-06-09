@@ -28,11 +28,22 @@ export const POST: APIRoute = async ({ request }) => {
       }),
       { status: 200, headers: { 'Content-Type': 'application/json' } }
     );
-  } catch (err) {
+  } catch (err: any) {
     console.error('Error verifying email:', err);
+
     return new Response(
-      JSON.stringify({ success: false, message: 'Error verifying email.' }),
-      { status: 400, headers: { 'Content-Type': 'application/json' } }
+      JSON.stringify({
+        success: false,
+        message: err?.message || 'Unknown error',
+        type: err?.type,
+        code: err?.code,
+      }),
+      {
+        status: 400,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
     );
   }
 };

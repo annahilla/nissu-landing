@@ -37,7 +37,8 @@ const secret = params.get('secret');
         statusEl.textContent =
           '✅ Email verified successfully. You can now return to the app and log in.';
       } else {
-        statusEl.textContent = '❌ ' + data.message;
+        console.log(data);
+        statusEl.textContent = `❌ ${data.message}`;
       }
     } catch (err) {
       console.error(err);
