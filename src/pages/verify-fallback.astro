@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 const params = new URL(Astro.request.url).searchParams;
 const userId = params.get('userId');
 const secret = params.get('secret');
+const projectId = import.meta.env.PUBLIC_APPWRITE_PROJECT_ID;
+const endpoint = import.meta.env.PUBLIC_APPWRITE_ENDPOINT;
 ---
 
 <Layout>
@@ -17,34 +19,27 @@ const secret = params.get('secret');
   </div>
 </Layout>
 
-<script is:inline define:vars={{ userId, secret }}>
-  async function run() {
-    const statusEl = document.getElementById('status');
+<script type="module" define:vars={{ userId, secret, projectId, endpoint }}>
+  import { Client, Account } from 'appwrite';
 
-    try {
-      const res = await fetch('/api/verify-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          userId: userId,
-          secret: secret,
-        }),
-      });
+  const statusEl = document.getElementById('status');
 
-      const data = await res.json();
-
-      if (data.success) {
-        statusEl.textContent =
-          '✅ Email verified successfully. You can now return to the app and log in.';
-      } else {
-        console.log(data);
-        statusEl.textContent = `❌ ${data.message}`;
-      }
-    } catch (err) {
-      console.error(err);
-      statusEl.textContent = '❌ There was an error verifying your email.';
+  try {
+    if (!userId || !secret) {
+      throw new Error('Invalid verification link.');
     }
-  }
 
-  window.addEventListener('load', run);
+    const client = new Client().setEndpoint(endpoint).setProject(projectId);
+
+    const account = new Account(client);
+
+    await account.updateVerification(userId, secret);
+
+    statusEl.textContent =
+      '✅ Email verified successfully. You can now return to the app.';
+  } catch (error) {
+    console.error(error);
+
+    statusEl.textContent = `❌ ${error?.message || 'Error verifying email.'}`;
+  }
 </script>
