@@ -20,7 +20,10 @@ const endpoint = import.meta.env.PUBLIC_APPWRITE_ENDPOINT;
 </Layout>
 
 <script type="module" define:vars={{ userId, secret, projectId, endpoint }}>
-  import { Client, Account } from 'appwrite';
+  import {
+    Client,
+    Account,
+  } from 'https://cdn.jsdelivr.net/npm/appwrite@15.0.0/+esm';
 
   const statusEl = document.getElementById('status');
 
